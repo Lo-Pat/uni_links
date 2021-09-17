@@ -44,7 +44,10 @@ static id _instance;
   _latestLink = [latestLink copy];
   [self didChangeValueForKey:key];
 
-  if (_eventSink) _eventSink(_latestLink);
+  if (_eventSink) {
+      _eventSink(_latestLink)
+      self.initialLink = nil
+  };
 }
 
 - (BOOL)application:(UIApplication *)application
@@ -79,6 +82,7 @@ static id _instance;
 - (void)handleMethodCall:(FlutterMethodCall *)call result:(FlutterResult)result {
   if ([@"getInitialLink" isEqualToString:call.method]) {
     result(self.initialLink);
+    self.initialLink = nil
     // } else if ([@"getLatestLink" isEqualToString:call.method]) {
     //     result(self.latestLink);
   } else {
