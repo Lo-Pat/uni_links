@@ -58,6 +58,7 @@ static id _instance;
 - (BOOL)application:(UIApplication *)application
             openURL:(NSURL *)url
             options:(NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options {
+  self.initialLink = [url absoluteString];
   self.latestLink = [url absoluteString];
   return YES;
 }
