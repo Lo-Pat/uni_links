@@ -45,8 +45,8 @@ static id _instance;
   [self didChangeValueForKey:key];
 
   if (_eventSink) {
-      _eventSink(_latestLink)
-      self.initialLink = nil
+      _eventSink(_latestLink);
+      self.initialLink = nil;
   };
 }
 
@@ -82,7 +82,7 @@ static id _instance;
 - (void)handleMethodCall:(FlutterMethodCall *)call result:(FlutterResult)result {
   if ([@"getInitialLink" isEqualToString:call.method]) {
     result(self.initialLink);
-    self.initialLink = nil
+    self.initialLink = nil;
     // } else if ([@"getLatestLink" isEqualToString:call.method]) {
     //     result(self.latestLink);
   } else {
